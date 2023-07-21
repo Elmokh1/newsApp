@@ -6,7 +6,8 @@ import 'package:news_app_route/shared_componnant/network/api_Manger.dart';
 import '../../models/ArticalsModel.dart';
 
 class NewsListVeiwModel extends Cubit<NewsListVeiwState> {
-  NewsListVeiwModel() : super(LoadingState(loadingMessage: "Loading..................."));
+  NewsListVeiwModel()
+      : super(LoadingState(loadingMessage: "Loading..................."));
 
   void loadArticles(String sourceId) async {
     try {
@@ -19,10 +20,11 @@ class NewsListVeiwModel extends Cubit<NewsListVeiwState> {
         emit(SuccessState(respons.articles!));
         return;
       }
-    } on TimeoutException catch(e) {
-      emit(ErrorState(errorMessage: "Coulden`t reach to server Please Check Your Internet and Try again"));
-    }
-    on Exception catch (e) {
+    } on TimeoutException catch (e) {
+      emit(ErrorState(
+          errorMessage:
+              "Coulden`t reach to server Please Check Your Internet and Try again"));
+    } on Exception catch (e) {
       // TODO
       emit(ErrorState(errorMessage: "Please Try Again"));
     }
@@ -36,14 +38,12 @@ class LoadingState extends NewsListVeiwState {
 
   LoadingState({this.loadingMessage});
 }
-
 class ErrorState extends NewsListVeiwState {
   String? errorMessage;
   Exception? exception;
 
   ErrorState({this.errorMessage, this.exception});
 }
-
 class SuccessState extends NewsListVeiwState {
   List<Articles> articles;
 

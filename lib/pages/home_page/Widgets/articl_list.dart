@@ -20,8 +20,8 @@ class ArticlList extends StatelessWidget {
         if (state is LoadingState) {
           return Column(
             children: [
-              CircularProgressIndicator(),
-              SizedBox(
+              const CircularProgressIndicator(),
+              const SizedBox(
                 height: 2,
               ),
               Text(state.loadingMessage ?? ""),
@@ -32,7 +32,7 @@ class ArticlList extends StatelessWidget {
           Column(
             children: [
               Text(state.errorMessage ?? ""),
-              IconButton(onPressed: () {}, icon: Icon(Icons.refresh))
+              IconButton(onPressed: () {}, icon: const Icon(Icons.refresh))
             ],
           );
         }
